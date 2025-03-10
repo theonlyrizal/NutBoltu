@@ -1,6 +1,35 @@
+:root {
+    --background-color: #73d4ad;
+    --container-bg-color: #fff;
+    --container-padding: 30px;
+    --container-border-radius: 30px;
+    --container-box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+    --input-padding: 0px;
+    --input-margin: 15px 0;
+    --input-border: 1px solid #818181;
+    --input-border-radius: 15px;
+    --input-focus-border: 2px solid #838383; /* Added focus border variable */
+    --button-bg-color: #009E60;
+    --button-hover-bg-color: #007a4a;
+    --button-color: #fff;
+    --button-padding: 10px;
+    --button-border-radius: 5px;
+    --toggle-link-color: #009E60;
+    --toggle-link-margin-top: 10px;
+    --transition-duration: 0.3s; /* Added transition duration variable */
+    --font-family: Consolas, sans-serif; /* Added font family variable */
+    --font-size: 16px; /* Added font size variable */
+    --font-weight: normal; /* Added font weight variable */
+    --heading-font-size: 30px; /* Added heading font size variable */
+    --heading-font-weight: bold; /* Added heading font weight variable */
+    --heading-font-family: Consolas, sans-serif; /* Added heading font family variable */
+}
+
 body {
-    background-color: #73d4ad;
-    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,44 +38,64 @@ body {
 }
 
 .container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--container-bg-color);
+    padding: var(--container-padding);
+    border-radius: var(--container-border-radius);
+    box-shadow: var(--container-box-shadow);
     text-align: center;
     width: 300px;
 }
 
 h1 {
     margin-bottom: 20px;
+    font-family: var(--heading-font-family);
+    font-size: var(--heading-font-size);
+    font-weight: var(--heading-font-weight);
 }
 
 input[type="text"],
 input[type="password"] {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    height: 40px;
+    padding: var(--input-padding);
+    margin: var(--input-margin);
+    border: var(--input-border);
+    border-radius: var(--input-border-radius);
+    transition: border var(--transition-duration); /* Added transition for border */
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border: var(--input-focus-border); /* Apply focus border */
 }
 
 button {
     width: 100%;
-    padding: 10px;
-    background-color: #009E60;
-    color: #fff;
+    padding: var(--button-padding);
+    background-color: var(--button-bg-color);
+    color: var(--button-color);
     border: none;
-    border-radius: 5px;
+    border-radius: var(--button-border-radius);
     cursor: pointer;
+    transition: background-color var(--transition-duration); /* Added transition property */
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
 }
 
 button:hover {
-    background-color: #007a4a;
+    background-color: var(--button-hover-bg-color);
 }
 
 .toggle-link {
     display: block;
-    margin-top: 10px;
-    color: #009E60;
+    margin-top: var(--toggle-link-margin-top);
+    color: var(--toggle-link-color);
     cursor: pointer;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
 }
