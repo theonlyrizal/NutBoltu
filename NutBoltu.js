@@ -1,32 +1,39 @@
-document.getElementById('toggleSignup').addEventListener('click', function() {
-    const loginBtn = document.getElementById('loginBtn');
-    if (loginBtn.textContent === 'Login') {
-        loginBtn.textContent = 'Sign Up';
+document.getElementById('toggleAuth').addEventListener('click', function() {
+    const authBtn = document.getElementById('authBtn');
+    if (authBtn.textContent === 'Login') {
+        authBtn.textContent = 'Sign Up';
         this.textContent = 'Already have an account? Login';
     } else {
-        loginBtn.textContent = 'Login';
+        authBtn.textContent = 'Login';
         this.textContent = "Don't have an account? Sign up";
     }
 });
 
-document.getElementById('loginForm').addEventListener('submit', function(event) {
+document.getElementById('authForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
+    const action = document.getElementById('authBtn').textContent.toLowerCase();
 
-    fetch('/login', {
+    fetch('auth.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ username, password, action })
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            window.location.href = 'homepage.html'; // Replace with the actual homepage URL
+            if (action === 'login') {
+                window.location.href = 'homepage.html'; // Replace with the actual homepage URL
+            } else {
+                alert('Sign-up successful! Please log in.');
+                document.getElementById('authBtn').textContent = 'Login';
+                document.getElementById('toggleAuth').textContent = "Don't have an account? Sign up";
+            }
         } else {
-            alert('Invalid login credentials');
+            alert('Invalid credentials or sign-up failed');
         }
     })
     .catch(error => console.error('Error:', error));
