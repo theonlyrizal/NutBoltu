@@ -33,7 +33,7 @@ document.getElementById('authForm').addEventListener('submit', function(event) {
                 document.getElementById('toggleAuth').textContent = "Don't have an account? Sign up";
             }
         } else {
-            alert('Invalid credentials or sign-up failed');
+            alert('Error: ' + (data.error || 'Invalid credentials or sign-up failed'));
         }
     })
     .catch(error => console.error('Error:', error));
